@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3cer ejercicio ciudades</title>
+</head>
+<body>
+    <div id="elemento">
+        {{contenido}} <br>
+        <input type="text" v-model="nuevaCiudad" />
+        <input type="text" v-model="nuevoLink" />
+        <button @click="agregarCiudad" >Agregar Ciudad </button>
+
+    <ul>
+        <li v-for="ciudad of ciudades"> <a :href="ciudad.link" target="_blank">{{ciudad.nombre}}</a> </li>
+    </ul>
+
+    </div>
+    
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script> 
+    const con=new Vue({
+        el: "#elemento",
+        data:{
+            contenido:"Tercer ejercicio de VUE ahora lo hacemos con ciudades",
+            ciudades:[
+                {nombre:"Cali",link: 'https://www.cali.gov.co/'},
+                {nombre:"Medellin",link: 'https://www.medellin.gov.co/'},
+                {nombre:"Bogota",link: 'https://bogota.gov.co/'}
+            ],
+            nuevaCiudad:'',
+            nuevoLink:'',
+    },
+    methods: {
+        agregarCiudad(){
+            this.ciudades.push({nombre:this.nuevaCiudad,link:this.nuevoLink})
+        }
+    },
+})
+
+</script>
+</html>
